@@ -1,0 +1,47 @@
+<div>
+
+    <h1> Visit List </h1>
+
+
+    <div style="margin: 20px 20px 20px 0">
+        <a href="/visit-add"> Create New </a>
+    </div>
+
+    <div style="margin: 20px 20px 20px 0">
+        <a href="/home"> Back </a>
+    </div>
+
+    <table>
+
+        <tr>
+            <th> ID </th>
+            <th> VISIT DATE </th>
+            <th> PHYSICIAN </th>
+            <th> REASON </th>
+            <th> CREATED DATE </th>
+            <th> CREATED BY </th>
+            <th> MODIFIED DATE</th>
+            <th> MODIFIED BY </th>
+            <th> ACTION </th>
+        </tr>
+
+
+        <tr *ngFor="let visit of visitList">
+            <td> {{visit.id}}</td>
+            <td> {{visit.visitDate}} </td>
+            <td> {{visit.physician.name}}</td>
+            <td> {{visit.reason}} </td>
+            <td> {{visit.createdDate}}</td>
+            <td> {{visit.createdBy}}</td>
+            <td> {{visit.modifiedDate}}</td>
+            <td> {{visit.modifiedBy}}</td>
+            <td>
+                <span> <button (click)="delete(visit.id)"> Delete </button></span>
+                <span> <button [routerLink]="['/visit-update', visit.id]"> Update </button></span>
+            </td>
+        </tr>
+
+
+
+    </table>
+</div>

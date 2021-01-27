@@ -1,0 +1,56 @@
+<div>
+
+    <div class="link-container">
+        <a href="visit-list"> Back </a>
+    </div>
+
+    <form #visitForm="ngForm">
+
+        <!-- ID  -->
+        <div class="form-field">
+            <span>ID</span>
+            <input id="id" name="id" type="text" [(ngModel)]="visit.id" required #id="ngModel">
+            <div *ngIf="id.errors" class="error">
+                ID is required
+            </div>
+        </div>
+
+
+        <!-- VISIT DATE  -->
+        <div class="form-field">
+            <span>Visit Date  </span>
+            <input id="visitDate" name="visitDate" type="date" [(ngModel)]="visit.visitDate" required #visitDate="ngModel">
+            <div *ngIf="visitDate.errors" class="error">
+                VisitDate is required
+            </div>
+        </div>
+
+        <!-- Physician  -->
+        <div class="form-field">
+            <span> Physician </span>
+
+            <select name="physician" id="physician" [(ngModel)]="visit.physicianId" required #physician="ngModel">
+                <option *ngFor="let physician of physicianList" [value]="physician.id"> {{physician.name}}</option>
+            </select>
+            <div *ngIf="physician.errors" class="error">
+                Physician is required
+            </div>
+        </div>
+
+
+
+        <!-- REASON  -->
+        <div class="form-field">
+            <span> Reason   </span>
+            <textarea id="reason" name="reason" [(ngModel)]="visit.reason" required #reason="ngModel">
+            </textarea>
+            <div *ngIf="reason.errors" class="error">
+                Reason is required
+            </div>
+        </div>
+
+        <!-- Update Button  -->
+        <button (click)="submit()" [disabled]="!visitForm.form.valid"> Save </button>
+    </form>
+
+</div>

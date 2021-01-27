@@ -1,0 +1,51 @@
+<div>
+
+    <div class="link-container">
+        <a href="patient-list"> Back </a>
+    </div>
+
+
+    <form #patientForm="ngForm">
+
+        <!-- ID  -->
+        <div class="form-field">
+            <span>ID</span>
+            <input id="id" name="id" type="text" [(ngModel)]="patient.id" required #id="ngModel" [disabled]="true">
+        </div>
+
+
+        <!-- NAME  -->
+        <div class="form-field">
+            <span>NAME</span>
+            <input id="name" name="name" type="text" [(ngModel)]="patient.name" required #name="ngModel">
+            <div *ngIf="name.errors" class="error">
+                Name is required
+            </div>
+        </div>
+
+        <!-- AGE  -->
+        <div class="form-field">
+            <span>AGE</span>
+            <input id="age" name="age" type="number" min="0" step="1" onkeypress="return event.charCode >= 49 && event.charCode <= 57" [(ngModel)]="patient.age" required #age="ngModel">
+            <div *ngIf="age.errors" class="error">
+                Age is required
+            </div>
+        </div>
+
+        <!-- GENDER  -->
+        <div class="form-field">
+            <span>GENDER</span>
+
+            <select name="gender" id="gender" [(ngModel)]="patient.gender" required #gender="ngModel">
+                <option *ngFor="let gender of genders" [value]="gender.code"> {{gender.desc}}</option>
+            </select>
+            <div *ngIf="gender.errors" class="error">
+                Gender is required
+            </div>
+        </div>
+
+        <!-- Update Button  -->
+        <button (click)="submit()" [disabled]="!patientForm.form.valid"> Update </button>
+    </form>
+
+</div>

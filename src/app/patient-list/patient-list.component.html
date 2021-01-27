@@ -1,0 +1,45 @@
+<div>
+
+    <h1> Patient List </h1>
+
+
+    <div style="margin: 20px 20px 20px 0">
+        <a href="/patient-add"> Create New </a>
+    </div>
+
+    <div style="margin: 20px 20px 20px 0">
+        <a href="/home"> Back </a>
+    </div>
+
+    <table>
+
+        <tr>
+            <th> ID </th>
+            <th> NAME </th>
+            <th> AGE </th>
+            <th> GENDER </th>
+            <th> CREATED DATE </th>
+            <th> MODIFIED DATE </th>
+            <th> CREATED BY </th>
+            <th> ACTION </th>
+        </tr>
+
+
+        <tr *ngFor="let patient of patientList">
+            <td> {{patient.id}}</td>
+            <td> {{patient.name}} </td>
+            <td> {{patient.age}} </td>
+            <td> {{patient.gender}} </td>
+            <td> {{patient.createdDate}}</td>
+            <td> {{patient.modifiedDate}} </td>
+            <td> {{patient.createdBy}}</td>
+            <td>
+                <span> <button (click)="delete(patient.id)"> Delete </button></span>
+                <span> <button [routerLink]="['/patient-update', patient.id]"> Update </button></span>
+            </td>
+        </tr>
+
+
+
+    </table>
+</div>

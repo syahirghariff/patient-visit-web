@@ -1,0 +1,41 @@
+<div>
+
+    <h1> Physician List </h1>
+
+
+    <div style="margin: 20px 20px 20px 0">
+        <a href="/physician-add"> Create New </a>
+    </div>
+
+    <div style="margin: 20px 20px 20px 0">
+        <a href="/home"> Back </a>
+    </div>
+
+    <table>
+
+        <tr>
+            <th> ID </th>
+            <th> NAME </th>
+            <th> CREATED DATE </th>
+            <th> MODIFIED DATE </th>
+            <th> CREATED BY </th>
+            <th> ACTION </th>
+        </tr>
+
+
+        <tr *ngFor="let physician of physicianList">
+            <td> {{physician.id}}</td>
+            <td> {{physician.name}} </td>
+            <td> {{physician.createdDate}}</td>
+            <td> {{physician.modifiedDate}} </td>
+            <td> {{physician.createdBy}}</td>
+            <td>
+                <span> <button (click)="delete(physician.id)"> Delete </button></span>
+                <span> <button [routerLink]="['/physician-update', physician.id]"> Update </button></span>
+            </td>
+        </tr>
+
+
+
+    </table>
+</div>

@@ -1,0 +1,33 @@
+<div>
+
+    <div class="link-container">
+        <a href="physician-list"> Back </a>
+    </div>
+
+
+    <form #physicianForm="ngForm">
+
+        <!-- ID  -->
+        <div class="form-field">
+            <span>ID</span>
+            <input id="id" name="id" type="text" [(ngModel)]="physician.id" required #id="ngModel" [disabled]="true">
+            <div *ngIf="id.errors" class="error">
+                ID is required
+            </div>
+        </div>
+
+
+        <!-- NAME  -->
+        <div class="form-field">
+            <span>NAME</span>
+            <input id="name" name="name" type="text" [(ngModel)]="physician.name" required #name="ngModel">
+            <div *ngIf="name.errors" class="error">
+                Name is required
+            </div>
+        </div>
+
+        <!-- Update Button  -->
+        <button (click)="submit()" [disabled]="!physicianForm.form.valid"> Update </button>
+    </form>
+
+</div>
